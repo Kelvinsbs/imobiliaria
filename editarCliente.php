@@ -2,19 +2,31 @@
 
     include __DIR__.'/vendor/autoload.php';
 
-    define('TITLE', 'Cadastrar Cliente');
+    define('TITLE', 'Editar Cliente');
 
     use \App\entity\Cliente;
-    $objCliente = new Cliente;
+
+    if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
+        header('location: index.php?status=error');
+        exit;
+    }
+
+    $objCliente = Cliente::getCliente($_GET['id']);
+    
+    if(!$objCliente instanceof Cliente){
+        header('location: index.php?status=error');
+        exit;
+    }
 
     if(isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["telefone"])){
         // do something about create
+        // $objCliente = new Cliente;
         
         $objCliente->nome = $_POST['nome'];
         $objCliente->email = $_POST['email'];
         $objCliente->telefone = $_POST['telefone'];
         
-        $objCliente->cadastrar();
+        $objCliente->atualizar();
 
         header('location: index.php?status=success');
         exit;

@@ -23,7 +23,24 @@ class Cliente{
         return true;
     }
 
+    public function atualizar(){
+        return (new Database('clientes'))->update('id = '.$this->id, [
+            'nome' => $this->nome,
+            'email' => $this->email,
+            'telefone' => $this->telefone,
+        ]);
+    }
+
+    public function excluir(){
+        // die(var_dump($this));
+        return (new Database('clientes'))->delete('id = '.$this->id);
+    }
+
     public static function getClientes($where = null, $order = null, $limit = null){
         return (new Database('clientes'))->select($where,$order,$limit)->fetchAll(PDO::FETCH_CLASS,self::class);
+    }
+
+    public static function getCliente($id){
+        return (new Database('clientes'))->select('id = '.$id)->fetchObject(self::class);
     }
 }
