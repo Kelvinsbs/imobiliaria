@@ -19,8 +19,6 @@
         header('location: index.php?status=success');
         exit;
 
-        // var_dump($objCliente);die;
-
     }
 
     include __DIR__.'/includes/header.php';

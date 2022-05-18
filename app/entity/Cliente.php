@@ -32,7 +32,6 @@ class Cliente{
     }
 
     public function excluir(){
-        // die(var_dump($this));
         return (new Database('clientes'))->delete('id = '.$this->id);
     }
 

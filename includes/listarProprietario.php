@@ -16,34 +16,35 @@
     }
 
     $html = '';
-    foreach ($clientes as $cliente) {
+    foreach ($proprietarios as $proprietario) {
         $html .= '<tr>
-                        <td>'.$cliente->id.'</td>
-                        <td>'.$cliente->nome.'</td>
-                        <td>'.$cliente->email.'</td>
-                        <td>'.$cliente->telefone.'</td>
+                        <td>'.$proprietario->id.'</td>
+                        <td>'.$proprietario->nome.'</td>
+                        <td>'.$proprietario->email.'</td>
+                        <td>'.$proprietario->telefone.'</td>
+                        <td>'.$proprietario->dia_repasse.'</td>
                         <td>
-                            <a href="editarCliente.php?id='.$cliente->id.'">
+                            <a href="editarProprietario.php?id='.$proprietario->id.'">
                                 <button class="btn btn-primary">Editar</button>
                             </a>
-                            <a href="excluirCliente.php?id='.$cliente->id.'">
+                            <a href="excluirProprietario.php?id='.$proprietario->id.'">
                                 <button class="btn btn-danger">Excluir</button>
                             </a>
                         </td>
                     </tr>';
     }
 
-    $html = !empty($html) ? $html : '<tr><td colspan="5" class="text-center">Nenhum cliente encontrado</td></tr>'
+    $html = !empty($html) ? $html : '<tr><td colspan="5" class="text-center">Nenhum proprietario encontrado</td></tr>'
 ?>
 <main>
 
     <?= $mensagem ?>
     <section>
-        <a href="cadastrarCliente.php">
-            <button class="btn btn-success">Cadastrar novo Cliente</button>
-        </a>
         <a href="cadastrarProprietario.php">
             <button class="btn btn-success">Cadastrar novo Proprietario</button>
+        </a>
+        <a href="cadastrarCliente.php">
+            <button class="btn btn-success">Cadastrar novo Cliente</button>
         </a>
     </section>
 
@@ -55,6 +56,7 @@
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Telefone</th>
+                    <th>Dia de repasse</th>
                     <th>Ações</th>
                 </tr>
             </thead>
