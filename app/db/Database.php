@@ -86,6 +86,16 @@ class Database {
         return $this->execute($query);
     }
 
+    public function selectDadosContrato(){
+
+        $query = 'SELECT contrato.*, imoveis.endereco, proprietario.nome AS nome_proprietario, clientes.nome AS nome_locatario FROM contrato  
+                    LEFT JOIN imoveis ON contrato.imovel = imoveis.id
+                    LEFT JOIN proprietario ON contrato.proprietario = proprietario.id
+                    LEFT JOIN clientes ON contrato.locatario = clientes.id';
+
+        return $this->execute($query);
+    }
+
    
 }
 

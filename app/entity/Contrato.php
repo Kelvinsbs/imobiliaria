@@ -61,7 +61,7 @@ class Contrato{
         return (new Database('contrato'))->select('id = '.$id)->fetchObject(self::class);
     }
 
-    public function getcontratoAndProprietario(){
-        return (new Database('contrato'))->selectJoin()->fetchAll(PDO::FETCH_CLASS,self::class);
+    public function getDadosContratos(){
+        return (new Database('contrato'))->selectDadosContrato()->fetchAll(PDO::FETCH_CLASS,self::class);
     }
 }

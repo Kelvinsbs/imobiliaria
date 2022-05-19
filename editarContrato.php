@@ -2,24 +2,29 @@
 
     include __DIR__.'/vendor/autoload.php';
 
-    define('TITLE', 'Cadastrar Contrato');
+    define('TITLE', 'Editar Contrato');
 
     use \App\entity\Contrato;
     use \App\entity\Imovel;
     use \App\entity\Proprietario;
     use \App\entity\Cliente;
 
-    $objContrato = new Contrato;
-    $objImovel = new Imovel;
-    $objProprietario = new Proprietario;
-    $objCliente = new Cliente;
+    if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
+        header('location: listarContrato.php?status=error');
+        exit;
+    }
 
-    $imoveis = Imovel::getImoveis();
+    $objContrato = Contrato::getContrato($_GET['id']);
     $proprietarios = Proprietario::getProprietarios();
-    $clientes = Cliente::getClientes();
+    $proprietarios = Imovel::getImoveis();
+    $proprietarios = Cliente::getClientes();
+    
+    if(!$objImovel instanceof Imovel){
+        header('location: listarContrato.php?status=error');
+        exit;
+    }
 
     if(isset($_POST["imovel"]) && isset($_POST["proprietario"]) && isset($_POST["locatario"]) && isset($_POST["data_inicio"]) && isset($_POST["data_fim"]) && isset($_POST["taxa_administracao"]) && isset($_POST["valor_aluguel"]) && isset($_POST["valor_condominio"]) && isset($_POST["valor_iptu"])){
-        // do something about create
         
         $objContrato->imovel = $_POST['imovel'];
         $objContrato->proprietario = $_POST['proprietario'];
@@ -31,11 +36,10 @@
         $objContrato->valor_condominio = $_POST['valor_condominio'];
         $objContrato->valor_iptu = $_POST['valor_iptu'];
         
-        $objContrato->cadastrar();
+        $objImovel->atualizar();
 
         header('location: listarContrato.php?status=success');
         exit;
-
     }
 
     include __DIR__.'/includes/header.php';
