@@ -8,7 +8,7 @@
     use \App\entity\Imovel;
     use \App\entity\Proprietario;
     use \App\entity\Cliente;
-
+    // die(var_dump($_GET['id']));
     if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
         header('location: listarContrato.php?status=error');
         exit;
@@ -16,10 +16,11 @@
 
     $objContrato = Contrato::getContrato($_GET['id']);
     $proprietarios = Proprietario::getProprietarios();
-    $proprietarios = Imovel::getImoveis();
-    $proprietarios = Cliente::getClientes();
+    $imoveis = Imovel::getImoveis();
+    $clientes = Cliente::getClientes();
+    // die(var_dump($objContrato, $proprietarios, $imoveis, $clientes));
     
-    if(!$objImovel instanceof Imovel){
+    if(!$objContrato instanceof Contrato){
         header('location: listarContrato.php?status=error');
         exit;
     }
@@ -36,7 +37,7 @@
         $objContrato->valor_condominio = $_POST['valor_condominio'];
         $objContrato->valor_iptu = $_POST['valor_iptu'];
         
-        $objImovel->atualizar();
+        $objContrato->atualizar();
 
         header('location: listarContrato.php?status=success');
         exit;
