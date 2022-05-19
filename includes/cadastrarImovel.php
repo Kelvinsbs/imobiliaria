@@ -5,7 +5,16 @@
         </a>
 
         <h2 class="mt-3"><?= TITLE ?></h2>
-
+        <?php 
+            $html = '';
+            foreach ($proprietarios as $proprietario) {
+                if(!empty($objImovel->proprietario) && $objImovel->proprietario == $proprietario->id){
+                    $html .= '<option value="'.$proprietario->id.'" selected>'.$proprietario->nome.'</option>';
+                }else{
+                    $html .= '<option value="'.$proprietario->id.'">'.$proprietario->nome.'</option>';
+                }
+            }
+        ?>
         <form method="post">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Endereço</label>
@@ -13,13 +22,9 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Proprietario</label>
-                <select type="email" class="form-control" id="Proprietario" name="Proprietario">
-                    <?php 
-                            die(var_dump($proprietarios));
-                        foreach ($proprietarios as $proprietario) {
-                            $html .= '<option value="'.$proprietario->id.'">'.$proprietario->nome.'</option>';
-                        }
-                    ?>
+                <select class="form-control" id="proprietario" name="proprietario">
+                    <option value="0">Selecione</option>
+                    <?=$html?>
                 </select>
             </div>
             <div class="form-group">
@@ -29,7 +34,7 @@
     </section>
     <script>
         window.onload = function(){
-            if(document.getElementById('nome').value == ''){
+            if(document.getElementById('endereco').value == ''){
                 document.getElementById('btn').innerHTML = 'Cadastrar'
             }else{
                 document.getElementById('btn').innerHTML = 'Editar'

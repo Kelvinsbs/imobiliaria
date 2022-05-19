@@ -79,6 +79,13 @@ class Database {
         return true;
     }
 
+    public function selectJoin(){
+
+        $query = 'SELECT imoveis.*, proprietario.nome as nome_proprietario FROM imoveis LEFT JOIN proprietario ON imoveis.proprietario = proprietario.id';
+
+        return $this->execute($query);
+    }
+
    
 }
 

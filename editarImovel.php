@@ -2,27 +2,33 @@
 
     include __DIR__.'/vendor/autoload.php';
 
-    define('TITLE', 'Cadastrar Imovel');
+    define('TITLE', 'Editar Imovel');
 
-    use \App\entity\Imovel;
     use \App\entity\Proprietario;
+    use \App\entity\Imovel;
 
-    $objImovel = new Imovel;
-    $objProprietario = new Proprietario;
+    if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
+        header('location: listarImoveis.php?status=error');
+        exit;
+    }
 
+    $objImovel = Imovel::getImovel($_GET['id']);
     $proprietarios = Proprietario::getProprietarios();
+    
+    if(!$objImovel instanceof Imovel){
+        header('location: listarImoveis.php?status=error');
+        exit;
+    }
 
     if(isset($_POST["endereco"]) && isset($_POST["proprietario"])){
-        // do something about create
         
         $objImovel->endereco = $_POST['endereco'];
         $objImovel->proprietario = $_POST['proprietario'];
         
-        $objImovel->cadastrar();
+        $objImovel->atualizar();
 
         header('location: listarImoveis.php?status=success');
         exit;
-
     }
 
     include __DIR__.'/includes/header.php';

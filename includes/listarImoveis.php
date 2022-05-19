@@ -14,13 +14,13 @@
             break;
         }
     }
-
+    // die(var_dump($novoImoveis));
     $html = '';
     foreach ($imoveis as $imovel) {
         $html .= '<tr>
                         <td>'.$imovel->id.'</td>
                         <td>'.$imovel->endereco.'</td>
-                        <td>'.$imovel->proprietario.'</td>
+                        <td>'.$imovel->nome_proprietario.'</td>
                         <td>
                             <a href="editarImovel.php?id='.$imovel->id.'">
                                 <button class="btn btn-primary">Editar</button>
@@ -38,6 +38,9 @@
 
     <?= $mensagem ?>
     <section>
+        <a href="cadastrarImovel.php">
+            <button class="btn btn-success">Cadastrar novo Imovel</button>
+        </a>
         <a href="cadastrarProprietario.php">
             <button class="btn btn-success">Cadastrar novo Proprietario</button>
         </a>
@@ -51,10 +54,8 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                    <th>Dia de repasse</th>
+                    <th>Endereço</th>
+                    <th>Proprietario</th>
                     <th>Ações</th>
                 </tr>
             </thead>

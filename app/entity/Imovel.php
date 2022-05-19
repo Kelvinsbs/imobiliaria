@@ -39,4 +39,9 @@ class Imovel{
     public static function getImovel($id){
         return (new Database('imoveis'))->select('id = '.$id)->fetchObject(self::class);
     }
+
+    public function getImoveisAndProprietario(){
+        return (new Database('imoveis'))->selectJoin()->fetchAll(PDO::FETCH_CLASS,self::class);
+        // die(var_dump($sql));
+    }
 }
