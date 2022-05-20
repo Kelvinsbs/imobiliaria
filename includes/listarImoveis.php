@@ -38,14 +38,17 @@
 
     <?= $mensagem ?>
     <section>
+        <a href="index.php">
+            <button class="btn btn-success">Listar Clientes</button>
+        </a>
+        <a href="listarProprietario.php">
+            <button class="btn btn-success">Listar Proprietarios</button>
+        </a>
+        <a href="listarContrato.php">
+            <button class="btn btn-success">Listar Contrato</button>
+        </a>
         <a href="cadastrarImovel.php">
             <button class="btn btn-success">Cadastrar novo Imovel</button>
-        </a>
-        <a href="cadastrarProprietario.php">
-            <button class="btn btn-success">Cadastrar novo Proprietario</button>
-        </a>
-        <a href="cadastrarCliente.php">
-            <button class="btn btn-success">Cadastrar novo Cliente</button>
         </a>
     </section>
 

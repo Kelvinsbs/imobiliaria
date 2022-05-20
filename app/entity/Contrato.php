@@ -32,7 +32,7 @@ class Contrato{
 
         $this->id = $objDatabase->insert($dados);
 
-        return true;
+        return $this->id;
     }
 
     public function atualizar(){

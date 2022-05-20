@@ -48,7 +48,7 @@
 
     <?= $mensagem ?>
     <section>
-        <a href="cadastrarContrato.php">
+        <!-- <a href="cadastrarContrato.php">
             <button class="btn btn-success">Cadastrar novo Contrato</button>
         </a>
         <a href="cadastrarImovel.php">
@@ -59,6 +59,19 @@
         </a>
         <a href="cadastrarCliente.php">
             <button class="btn btn-success">Cadastrar novo Cliente</button>
+        </a> -->
+
+        <a href="index.php">
+            <button class="btn btn-success">Listar Clientes</button>
+        </a>
+        <a href="listarProprietario.php">
+            <button class="btn btn-success">Listar Proprietarios</button>
+        </a>
+        <a href="listarImoveis.php">
+            <button class="btn btn-success">Listar Imoveis</button>
+        </a>
+        <a href="cadastrarContrato.php">
+            <button class="btn btn-success">Cadastrar novo Contrato</button>
         </a>
     </section>
 

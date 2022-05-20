@@ -31,3 +31,13 @@ create table contrato (
     valor_condominio boolean,
     valor_iptu boolean
 );
+
+create table mensalidades (
+    id int not null AUTO_INCREMENT PRIMARY KEY,
+    id_contrato int,
+    numero_parcela int,
+    valor_mensalidade float(10,3),
+    valor_repasse float(10,3)
+);
+
+ALTER TABLE `mensalidades` ADD `pago` BIT(0) NOT NULL AFTER `valor_repasse`, ADD `realizado` BIT(0) NOT NULL AFTER `pago`
